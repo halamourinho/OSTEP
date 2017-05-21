@@ -1,0 +1,93 @@
+1. Segmentation fault (core dumped)
+
+2. 
+Starting program: /mnt/c/Repos/OSTEP/homework/HW14-MemoryAPI/null
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000000000040057f in main (argc=1, argv=0x7ffffffddf78) at null.c:8
+8           int r = *p;
+
+3. 
+==348== Invalid read of size 4
+==348==    at 0x40057F: main (null.c:8)
+==348==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+
+4.
+==354== HEAP SUMMARY:
+==354==     in use at exit: 4 bytes in 1 blocks
+==354==   total heap usage: 1 allocs, 0 frees, 4 bytes allocated
+==354==
+==354== 4 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==354==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==354==    by 0x40053E: main (p4.c:5)
+==354==
+==354== LEAK SUMMARY:
+==354==    definitely lost: 4 bytes in 1 blocks
+==354==    indirectly lost: 0 bytes in 0 blocks
+==354==      possibly lost: 0 bytes in 0 blocks
+==354==    still reachable: 0 bytes in 0 blocks
+==354==         suppressed: 0 bytes in 0 blocks
+
+5.
+    1) no error
+    2)
+==368== Invalid write of size 4
+==368==    at 0x40054D: main (p5.c:6)
+==368==  Address 0x52031d0 is 0 bytes after a block of size 400 alloc'd
+==368==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==368==    by 0x40053E: main (p5.c:5)
+==368==
+==368==
+==368== HEAP SUMMARY:
+==368==     in use at exit: 400 bytes in 1 blocks
+==368==   total heap usage: 1 allocs, 0 frees, 400 bytes allocated
+==368==
+==368== 400 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==368==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==368==    by 0x40053E: main (p5.c:5)
+==368==
+==368== LEAK SUMMARY:
+==368==    definitely lost: 400 bytes in 1 blocks
+==368==    indirectly lost: 0 bytes in 0 blocks
+==368==      possibly lost: 0 bytes in 0 blocks
+==368==    still reachable: 0 bytes in 0 blocks
+==368==         suppressed: 0 bytes in 0 blocks
+
+6.
+    1) 0 (random value)
+    2)
+==375== Invalid read of size 4
+==375==    at 0x4005E3: main (p6.c:7)
+==375==  Address 0x5203040 is 0 bytes inside a block of size 400 free'd
+==375==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==375==    by 0x4005DE: main (p6.c:6)
+==375==  Block was alloc'd at
+==375==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==375==    by 0x4005CE: main (p6.c:5)
+==375==
+0
+==375==
+==375== HEAP SUMMARY:
+==375==     in use at exit: 0 bytes in 0 blocks
+==375==   total heap usage: 2 allocs, 2 frees, 912 bytes allocated
+==375==
+==375== All heap blocks were freed -- no leaks are possible
+==375==
+
+7.
+    1) Segmentation fault (core dumped)
+    2)
+==414== Invalid free() / delete / delete[] / realloc()
+==414==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==414==    by 0x400651: main (p7.c:8)
+==414==  Address 0xffefffdf0 is on thread 1's stack
+==414==  in frame #2, created by (below main) (libc-start.c:134)
+==414==
+0
+9
+==414==
+==414== HEAP SUMMARY:
+==414==     in use at exit: 0 bytes in 0 blocks
+==414==   total heap usage: 1 allocs, 2 frees, 512 bytes allocated
+==414==
+==414== All heap blocks were freed -- no leaks are possible
